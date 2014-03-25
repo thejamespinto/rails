@@ -1320,6 +1320,14 @@ class RelationTest < ActiveRecord::TestCase
     assert_equal posts(:welcome),  comments(:greetings).post
   end
 
+  def test_update_columns
+    assert_queries(1) do
+      assert_equal 2, Topic.where(id: [1,2]).update_columns(:content => "magic!")
+    end
+    assert_equal "magic!", Topic.find(1).content
+    assert_equal "magic!", Topic.find(2).content
+  end
+
   def test_distinct
     tag1 = Tag.create(:name => 'Foo')
     tag2 = Tag.create(:name => 'Foo')

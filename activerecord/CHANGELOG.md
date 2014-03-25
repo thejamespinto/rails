@@ -1,3 +1,16 @@
+*   `update_columns` is a better name than `update_all`,
+    `update_columns` follows conventions and is intuitive
+
+    Example:
+
+        # updates `viewed_at` and nothing else.
+
+        Photo.where(:id => 1).update_columns(:viewed_at => Time.now)
+        Photo.where(:id => [1,2]).update_columns(:viewed_at => Time.now)
+        
+
+    *James Pinto*
+
 *   `touch` accepts many attributes to be touched at once.
 
     Example:

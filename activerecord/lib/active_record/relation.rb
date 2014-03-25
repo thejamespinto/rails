@@ -327,6 +327,8 @@ module ActiveRecord
       @klass.connection.update stmt, 'SQL', bind_values
     end
 
+    alias update_columns update_all
+
     # Updates an object (or multiple objects) and saves it to the database, if validations pass.
     # The resulting object is returned whether the object was saved successfully to the database or not.
     #
